@@ -14,6 +14,7 @@ past7days = []
 # u = list[1:len(list)-1:2]
 with open("digital_behaviour.csv","r",newline="",encoding="utf-8") as file:
     reader = csv.DictReader(file)
+    past7days.append("Instagram_times")
     for val in reader:
         past7days.append(int(val["Instagram_Minutes"]))
 
