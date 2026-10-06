@@ -86,7 +86,29 @@ df["max"] = df[l].max(axis=1)
 
 print(df.head())
 
+#print the total minutes on each append
 
+dict = {}
+dict["Insta_min"] = int(df["Instagram_Minutes"].sum())
+dict["Youtube_min"] = int(df["YouTube_Minutes"].sum())
+dict["Whatsapp_min"] = int(df["WhatsApp_Minutes"].sum())
+dict["LinkedIn_min"] = int(df["LinkedIn_Minutes"].sum())
+  
+print(dict)
 
+#which app consumed most time
+print(max(dict,key=dict.get))
 
+#how many heavy days has
+print(df.loc[df["Day_Type"]=="heavy","Day_Type"].count())
 
+#best study days
+print(df.loc[df["Total_Screen_time"]<df["Study_Minutes"],"Total_Screen_time"].count())
+
+#how much did you study  on heavy days
+print(df.loc[df["Total_Screen_time"]==df["Total_Screen_time"].max(),"Study_Minutes"])
+
+#avg of Digital_Balance
+print(df["Total_Screen_time"].mean())
+
+df.to_csv("final_dataset_after_changes.csv",index=False)
